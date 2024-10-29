@@ -1,0 +1,12 @@
+file: my_report.rds
+file_size: 853
+pin_hash: 49f301b4093985df
+type: rds
+title: 'my_report: a pinned list'
+description: ~
+tags: ~
+urls: ~
+created: 20241029T052725Z
+api_version: 1
+user:
+  author: farid

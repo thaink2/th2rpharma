@@ -1,0 +1,32 @@
+---
+title: "Rpharma Report Workshop"
+subtitle: "Reproducible and scalable reporting using rmarkdown & heddlr"
+author: "Farid"
+date: "`r Sys.Date()`"
+output: 
+  prettydoc::html_pretty:
+    toc: true
+params:
+  author: "Daniel"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
+library(dplyr)
+```
+
+# Introduction by `r params$author`
+
+The workshop is about how to use rmarkdown and heddlr in order to build reproducible reports/dashboards 
+
+
+```{r}
+patient_risk_profiles <- readr::read_csv("dev_data/patient_risk_profiles.csv")
+patient_risk_profiles <- patient_risk_profiles%>%janitor::clean_names()
+# knitr::kable(patient_risk_profiles)
+```
+
+
+
+
+

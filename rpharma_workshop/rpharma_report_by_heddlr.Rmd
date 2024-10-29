@@ -1,0 +1,454 @@
+---
+title: Rpharma workshop Demo
+subtitle: Reproducible and scalable reporting using rmarkdown & heddlr
+author: Farid
+date: '`r Sys.Date()`'
+params:
+  author: ''
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
+library(dplyr)
+```
+
+# Introduction by 
+
+
+The workshop is about how to use rmarkdown and heddlr in order to build reproducible reports/dashboards 
+
+
+```{r}
+patient_risk_profiles <- readr::read_csv("dev_data/patient_risk_profiles.csv")
+patient_risk_profiles <- patient_risk_profiles%>%janitor::clean_names()
+# knitr::kable(patient_risk_profiles)
+```
+
+# Advanced Analysis 
+
+## Group: age_group_10_14
+
+```{r age_group_10_14_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_10_14 = dplyr::case_when(age_group_10_14 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_10_14)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_10_14)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_10_14 groupe
+
+```{r age_group_10_14_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_10_14 = dplyr::case_when(age_group_10_14 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_10_14)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_10_14)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_15_19
+
+```{r age_group_15_19_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_15_19 = dplyr::case_when(age_group_15_19 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_15_19)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_15_19)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_15_19 groupe
+
+```{r age_group_15_19_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_15_19 = dplyr::case_when(age_group_15_19 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_15_19)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_15_19)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_20_24
+
+```{r age_group_20_24_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_20_24 = dplyr::case_when(age_group_20_24 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_20_24)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_20_24)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_20_24 groupe
+
+```{r age_group_20_24_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_20_24 = dplyr::case_when(age_group_20_24 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_20_24)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_20_24)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_65_69
+
+```{r age_group_65_69_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_65_69 = dplyr::case_when(age_group_65_69 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_65_69)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_65_69)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_65_69 groupe
+
+```{r age_group_65_69_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_65_69 = dplyr::case_when(age_group_65_69 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_65_69)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_65_69)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_40_44
+
+```{r age_group_40_44_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_40_44 = dplyr::case_when(age_group_40_44 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_40_44)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_40_44)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_40_44 groupe
+
+```{r age_group_40_44_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_40_44 = dplyr::case_when(age_group_40_44 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_40_44)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_40_44)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_45_49
+
+```{r age_group_45_49_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_45_49 = dplyr::case_when(age_group_45_49 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_45_49)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_45_49)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_45_49 groupe
+
+```{r age_group_45_49_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_45_49 = dplyr::case_when(age_group_45_49 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_45_49)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_45_49)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_55_59
+
+```{r age_group_55_59_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_55_59 = dplyr::case_when(age_group_55_59 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_55_59)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_55_59)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_55_59 groupe
+
+```{r age_group_55_59_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_55_59 = dplyr::case_when(age_group_55_59 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_55_59)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_55_59)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_85_89
+
+```{r age_group_85_89_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_85_89 = dplyr::case_when(age_group_85_89 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_85_89)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_85_89)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_85_89 groupe
+
+```{r age_group_85_89_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_85_89 = dplyr::case_when(age_group_85_89 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_85_89)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_85_89)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_75_79
+
+```{r age_group_75_79_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_75_79 = dplyr::case_when(age_group_75_79 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_75_79)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_75_79)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_75_79 groupe
+
+```{r age_group_75_79_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_75_79 = dplyr::case_when(age_group_75_79 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_75_79)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_75_79)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_5_9
+
+```{r age_group_5_9_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_5_9 = dplyr::case_when(age_group_5_9 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_5_9)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_5_9)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_5_9 groupe
+
+```{r age_group_5_9_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_5_9 = dplyr::case_when(age_group_5_9 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_5_9)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_5_9)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_25_29
+
+```{r age_group_25_29_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_25_29 = dplyr::case_when(age_group_25_29 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_25_29)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_25_29)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_25_29 groupe
+
+```{r age_group_25_29_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_25_29 = dplyr::case_when(age_group_25_29 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_25_29)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_25_29)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_0_4
+
+```{r age_group_0_4_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_0_4 = dplyr::case_when(age_group_0_4 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_0_4)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_0_4)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_0_4 groupe
+
+```{r age_group_0_4_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_0_4 = dplyr::case_when(age_group_0_4 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_0_4)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_0_4)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_70_74
+
+```{r age_group_70_74_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_70_74 = dplyr::case_when(age_group_70_74 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_70_74)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_70_74)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_70_74 groupe
+
+```{r age_group_70_74_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_70_74 = dplyr::case_when(age_group_70_74 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_70_74)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_70_74)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_50_54
+
+```{r age_group_50_54_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_50_54 = dplyr::case_when(age_group_50_54 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_50_54)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_50_54)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_50_54 groupe
+
+```{r age_group_50_54_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_50_54 = dplyr::case_when(age_group_50_54 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_50_54)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_50_54)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_60_64
+
+```{r age_group_60_64_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_60_64 = dplyr::case_when(age_group_60_64 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_60_64)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_60_64)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_60_64 groupe
+
+```{r age_group_60_64_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_60_64 = dplyr::case_when(age_group_60_64 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_60_64)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_60_64)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_35_39
+
+```{r age_group_35_39_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_35_39 = dplyr::case_when(age_group_35_39 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_35_39)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_35_39)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_35_39 groupe
+
+```{r age_group_35_39_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_35_39 = dplyr::case_when(age_group_35_39 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_35_39)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_35_39)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_30_34
+
+```{r age_group_30_34_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_30_34 = dplyr::case_when(age_group_30_34 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_30_34)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_30_34)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_30_34 groupe
+
+```{r age_group_30_34_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_30_34 = dplyr::case_when(age_group_30_34 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_30_34)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_30_34)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_80_84
+
+```{r age_group_80_84_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_80_84 = dplyr::case_when(age_group_80_84 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_80_84)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_80_84)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_80_84 groupe
+
+```{r age_group_80_84_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_80_84 = dplyr::case_when(age_group_80_84 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_80_84)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_80_84)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+## Group: age_group_90_94
+
+```{r age_group_90_94_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_90_94 = dplyr::case_when(age_group_90_94 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_90_94)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(age_group_90_94)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the age_group_90_94 groupe
+
+```{r age_group_90_94_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(age_group_90_94 = dplyr::case_when(age_group_90_94 == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(age_group_90_94)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(age_group_90_94)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
+# Summary 
+
+The results have illustrated some xxx ....
+
+
+* The analysis has been done by `r params$author`

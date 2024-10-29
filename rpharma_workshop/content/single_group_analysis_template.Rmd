@@ -1,0 +1,22 @@
+## Group: TARGET_AGE_GROUP
+
+```{r TARGET_AGE_GROUP_chunk1}
+patient_risk_profiles%>%
+  dplyr::mutate(TARGET_AGE_GROUP = dplyr::case_when(TARGET_AGE_GROUP == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(TARGET_AGE_GROUP)%>%
+  dplyr::reframe(edema_in_prior_year = dplyr::n())%>%
+  echarts4r::e_chart(TARGET_AGE_GROUP)%>%
+  echarts4r::e_pie(edema_in_prior_year)
+```
+
+The average predicted risk of migraine at the TARGET_AGE_GROUP groupe
+
+```{r TARGET_AGE_GROUP_chunk2}
+patient_risk_profiles%>%
+  dplyr::mutate(TARGET_AGE_GROUP = dplyr::case_when(TARGET_AGE_GROUP == 1  ~ "Yes", .default = "No"))%>%
+  dplyr::group_by(TARGET_AGE_GROUP)%>%
+  dplyr::reframe(avg_predicted_risk_of_migraine = predicted_risk_of_migraine)%>%
+  echarts4r::e_chart(TARGET_AGE_GROUP)%>%
+  echarts4r::e_bar(avg_predicted_risk_of_migraine)
+```
+
