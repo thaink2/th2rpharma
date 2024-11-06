@@ -33,4 +33,4 @@ server <- function(input, output, session) {
   reportDownloadServer("report1")
 }
 
-shinyApp(ui, server, options = list(launch.browser = T))
+shinyApp(ui, server, options = list(launch.browser = T, port = 8912, host = '0.0.0.0'))
