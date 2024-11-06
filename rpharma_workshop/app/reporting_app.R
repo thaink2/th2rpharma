@@ -1,6 +1,6 @@
 library(shiny)
 library(rmarkdown)
-source("mod_report.R")
+source("./mod_report.R")
 source("../rmd_helpers.R")
 ui <- function(){
   bs4Dash::dashboardPage(
